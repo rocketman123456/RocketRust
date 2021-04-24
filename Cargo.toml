@@ -1,5 +1,5 @@
 [package]
-name = "RocketRust"
+name = "rocket_rust"
 version = "0.1.0"
 authors = ["Rocketman <759094438@qq.com>"]
 edition = "2018"
@@ -7,6 +7,10 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-glfw = "0.41.0"
+#winit = "0.24.0"
+#glfw = "0.41.0"
+glutin = "0.26.0"
 gl = "0.14.0"
 gl_loader = "0.1.2"
+#vulkano = "0.22.0"
+#vulkano-glfw-v2 = "0.2.0"
