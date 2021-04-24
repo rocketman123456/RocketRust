@@ -53,11 +53,21 @@ fn main() {
     
     // render loop
     event_loop.run(move |event, _, control_flow| {
-        println!("{:?}", event);
+        //println!("{:?}", event);
+        // ControlFlow::Poll continuously runs the event loop, even if the OS hasn't
+        // dispatched any events. This is ideal for games and similar applications.
+        *control_flow = ControlFlow::Poll;
+
+        // ControlFlow::Wait pauses the event loop if no events are available to process.
+        // This is ideal for non-game applications that only update in response to user
+        // input, and uses significantly less power/CPU time than ControlFlow::Poll.
         *control_flow = ControlFlow::Wait;
 
         match event {
             Event::LoopDestroyed => {
+                gl_loader::end_gl();
+                println!("End");
+                
                 return;
             },
             Event::WindowEvent { event, .. } => match event {
@@ -76,8 +86,4 @@ fn main() {
             _ => (),
         }
     });
-
-    gl_loader::end_gl();
-
-    println!("End");
 }
